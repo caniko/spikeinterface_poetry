@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spikeinterface_poetry"
-version = "1.2.2"
+version = "1.2.3"
 license = "MIT"
 
 authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
@@ -22,7 +22,7 @@ spikeinterface = "*"
 probeinterface = "^0.2.6"
 
 # spikeinterface_poetry additions
-phy = {version = "^1.0.9", optional = true}
+phy = {version = "^2.0b5", optional = true, allow-prereleases = true}
 
 numpy = "^1.21"
 scipy = "^1.8.0"
