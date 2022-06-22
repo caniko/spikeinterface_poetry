@@ -1,0 +1,129 @@
+[tool.poetry]
+name = "spikeinterface_poetry"
+version = "1.2.2"
+license = "MIT"
+
+authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
+
+homepage = "https://github.com/caniko/spikeinterface_poetry"
+description = "Poetry packaging with extras for working with spikeinterface"
+readme = "README.md"
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+
+spikeinterface = "*"
+probeinterface = "^0.2.6"
+
+# spikeinterface_poetry additions
+phy = {version = "^1.0.9", optional = true}
+
+numpy = "^1.21"
+scipy = "^1.8.0"
+networkx = "^2.7"
+neo = "^0.10.0"
+sklearn = "^0.0"
+
+pandas = "^1.4.1"
+h5py = "^3.6.0"
+
+matplotlib = "^3.5.1"
+joblib = "^1.1.0"
+tqdm = "^4.62.3"
+
+datalad = "^0.15.6"
+
+MEArec = {version = "^1.7.2", optional = true}
+pynwb = {version = "^2.0.0", optional = true}
+
+sonpy = [
+    {version = "^1.8.1", python= "~3.8", optional = true},
+    {version = "^1.9.1", python= "~3.9", optional = true}
+]
+
+PyQt5 = {version = "^5.15.6", optional = true}
+
+tridesclous = {version = "^1.6.5", optional = true}
+pyopencl = {version = "^2022.1", optional = true}
+loky = {version = "^3.0.0", optional = true}
+
+spyking-circus = {version = "^1.1.0", optional = true}
+
+herdingspikes = {version = "^0.3.99", optional = true}
+
+mountainsort4 = {version = "^1.0.0", optional = true}
+
+#cupy = {version = "^10.2.0", optional = true}
+#phylib = {version = "^2.4.1", optional = true}
+#pypandoc = {version = "^1.7.2", optional = true}
+#pykilosort = {git = "https://github.com/MouseLand/pykilosort.git", optional = true}
+
+Cython = {version = "*", optional = true}
+klusta = {version = "^3.0.16", optional = true}
+klustakwik2 = {version = "^0.2.7", optional = true}
+
+spython = {version = "^0.1.18", optional = true}
+docker = {version = "^5.0.3", optional = true}
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+
+[tool.poetry.extras]
+phy = ["phy"]
+
+tridesclous = ["tridesclous", "PyQt5", "loky", "pyopencl"]
+spyking-circus = ["spyking-circus", "PyQt5"]
+herdingspikes = ["herdingspikes"]
+#pykilosort = ["cupy", "phylib", "pypandoc", "pykilosort"]
+klusta = ["Cython", "klusta", "klustakwik2"]
+mountainsort = ["mountainsort4"]
+
+all_sorters = [
+    "PyQt5",
+    "tridesclous", "loky",
+    "spyking-circus",
+    "herdingspikes",
+#    "cupy", "phylib", "pypandoc", "pykilosort",
+    "Cython", "klusta", "klustakwik2",
+    "mountainsort4"
+]
+
+extractors = ["MEArec", "sonpy", "pynwb"]
+
+full = [
+    "MEArec", "sonpy", "pynwb",
+    "PyQt5",
+    "tridesclous", "loky",
+    "spyking-circus",
+    "herdingspikes",
+#    "cupy", "phylib", "pypandoc", "pykilosort",
+    "Cython", "klusta", "klustakwik2",
+    "mountainsort4"
+]
+
+docker = ["docker"]
+spython = ["spython"]
+
+test = [
+    "docker", "spython",
+
+    "MEArec", "sonpy", "pynwb",
+    "PyQt5",
+    "tridesclous", "loky",
+    "spyking-circus",
+    "herdingspikes"
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0.1"
+addopts = "-ra -q --lf"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
