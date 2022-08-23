@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spikeinterface_poetry"
-version = "1.2.3"
+version = "2.0.0"
 license = "MIT"
 
 authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
@@ -16,28 +16,30 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.10"
+python = ">=3.8,<3.11"
 
 spikeinterface = "*"
-probeinterface = "^0.2.6"
+probeinterface = "*"
 
-# spikeinterface_poetry additions
-phy = {version = "^2.0b5", optional = true, allow-prereleases = true}
-
-numpy = "^1.21"
-scipy = "^1.8.0"
-networkx = "^2.7"
 neo = "^0.10.0"
-sklearn = "^0.0"
-
-pandas = "^1.4.1"
-h5py = "^3.6.0"
-
-matplotlib = "^3.5.1"
 joblib = "^1.1.0"
 tqdm = "^4.62.3"
+numpy = "^1.21"
 
-datalad = "^0.15.6"
+scikit-learn = {version = "^1.0.2", optional = true}
+h5py = {version = "^3.6.0", optional = true}
+matplotlib = {version = "^3.5.1", optional = true}
+networkx = {version = "^2.7", python= ">=3.8", optional = true}
+pandas = [
+    {version = "*", python= "~3.7", optional = true},
+    {version = "^1.4.1", python= ">=3.8", optional = true}
+]
+scipy = [
+    {version = "^1.7.0", python="~3.7", optional = true},
+    {version = "^1.8.0", python=">=3.8,<3.11", optional = true}
+]
+
+datalad = {version = "^0.15.6", optional = true}
 
 MEArec = {version = "^1.7.2", optional = true}
 pynwb = {version = "^2.0.0", optional = true}
@@ -46,6 +48,9 @@ sonpy = [
     {version = "^1.8.1", python= "~3.8", optional = true},
     {version = "^1.9.1", python= "~3.9", optional = true}
 ]
+
+# spikeinterface_poetry additions
+phy = {version = "^2.0b5", optional = true, allow-prereleases = true}
 
 PyQt5 = {version = "^5.15.6", optional = true}
 
@@ -68,6 +73,7 @@ Cython = {version = "*", optional = true}
 klusta = {version = "^3.0.16", optional = true}
 klustakwik2 = {version = "^0.2.7", optional = true}
 
+# Containerisation frameworks
 spython = {version = "^0.1.18", optional = true}
 docker = {version = "^5.0.3", optional = true}
 
@@ -80,7 +86,7 @@ phy = ["phy"]
 tridesclous = ["tridesclous", "PyQt5", "loky", "pyopencl"]
 spyking-circus = ["spyking-circus", "PyQt5"]
 herdingspikes = ["herdingspikes"]
-#pykilosort = ["cupy", "phylib", "pypandoc", "pykilosort"]
+pykilosort = ["cupy", "phylib", "pypandoc", "pykilosort"]
 klusta = ["Cython", "klusta", "klustakwik2"]
 mountainsort = ["mountainsort4"]
 
@@ -89,7 +95,7 @@ all_sorters = [
     "tridesclous", "loky",
     "spyking-circus",
     "herdingspikes",
-#    "cupy", "phylib", "pypandoc", "pykilosort",
+    "cupy", "phylib", "pypandoc", "pykilosort",
     "Cython", "klusta", "klustakwik2",
     "mountainsort4"
 ]
@@ -102,7 +108,7 @@ full = [
     "tridesclous", "loky",
     "spyking-circus",
     "herdingspikes",
-#    "cupy", "phylib", "pypandoc", "pykilosort",
+    "cupy", "phylib", "pypandoc", "pykilosort",
     "Cython", "klusta", "klustakwik2",
     "mountainsort4"
 ]
