@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spikeinterface_poetry"
-version = "2.0.0"
+version = "2.0.1"
 license = "MIT"
 
 authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
@@ -19,17 +19,21 @@ classifiers = [
 python = ">=3.8,<3.11"
 
 spikeinterface = "*"
-probeinterface = "*"
+probeinterface = ">=0.2.9"
 
-neo = "^0.10.0"
+neo = "^0.10.2"
 joblib = "^1.1.0"
 tqdm = "^4.62.3"
+packaging = "^21.3"
 numpy = "^1.21"
 
+zarr = {version = "^2.12.0", optional = true}
+distinctipy = {version = "^1.2.2", optional = true}
 scikit-learn = {version = "^1.0.2", optional = true}
 h5py = {version = "^3.6.0", optional = true}
 matplotlib = {version = "^3.5.1", optional = true}
 networkx = {version = "^2.7", python= ">=3.8", optional = true}
+
 pandas = [
     {version = "*", python= "~3.7", optional = true},
     {version = "^1.4.1", python= ">=3.8", optional = true}
@@ -73,14 +77,29 @@ Cython = {version = "*", optional = true}
 klusta = {version = "^3.0.16", optional = true}
 klustakwik2 = {version = "^0.2.7", optional = true}
 
+# EDF
+pyEDFlib = {version = "^0.1.30", optional = true}
+
+# sliding_nn
+pymde = {version = "^0.1.15", optional = true}
+torch = {version = "^1.12.1", optional = true}
+pynndescent = {version = "^0.5.7", optional = true}
+
 # Containerisation frameworks
 spython = {version = "^0.1.18", optional = true}
 docker = {version = "^5.0.3", optional = true}
+
+# Dependency blocking, won't be installed directly
+numba = {version = "^0.56.0", optional = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.1"
 
 [tool.poetry.extras]
+full = ["zarr", "h5py", "pandas", "scipy", "sciki-learn", "matplotlib", "networkx"]
+docker = ["docker"]
+spython = ["spython"]
+
 phy = ["phy"]
 
 tridesclous = ["tridesclous", "PyQt5", "loky", "pyopencl"]
@@ -102,28 +121,21 @@ all_sorters = [
 
 extractors = ["MEArec", "sonpy", "pynwb"]
 
-full = [
+# The test group should be merged with [tool.poetry.dev-dependencies];
+# split for compability with pure-pip users
+test = [
+#    "docker", "spython",
+
+    "zarr", "distinctpy",
     "MEArec", "sonpy", "pynwb",
     "PyQt5",
     "tridesclous", "loky",
     "spyking-circus",
     "herdingspikes",
-    "cupy", "phylib", "pypandoc", "pykilosort",
-    "Cython", "klusta", "klustakwik2",
-    "mountainsort4"
-]
 
-docker = ["docker"]
-spython = ["spython"]
+    "pyEDFlib",
 
-test = [
-    "docker", "spython",
-
-    "MEArec", "sonpy", "pynwb",
-    "PyQt5",
-    "tridesclous", "loky",
-    "spyking-circus",
-    "herdingspikes"
+    "pymde", "torch", "pynndescent"
 ]
 
 [tool.pytest.ini_options]
