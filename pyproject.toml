@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spikeinterface_poetry"
-version = "2.1.0"
+version = "3.0.0"
 license = "MIT"
 
 authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
@@ -18,10 +18,10 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
 
-spikeinterface = "*"
+spikeinterface = "^0.95.1"
 probeinterface = ">=0.2.9"
 
-neo = "^0.10.2"
+neo = "*"
 joblib = "^1.1.0"
 tqdm = "^4.62.3"
 packaging = "^21.3"
@@ -100,6 +100,7 @@ pytest = "^7.0.1"
 full = ["zarr", "h5py", "pandas", "scipy", "sciki-learn", "matplotlib", "networkx"]
 docker = ["docker"]
 spython = ["spython"]
+singularity = ["spython"]
 
 phy = ["phy"]
 jupyter = ["jupyter"]
