@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spikeinterface_poetry"
-version = "3.0.0"
+version = "4.0.0"
 license = "MIT"
 
 authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
@@ -18,43 +18,10 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
 
-spikeinterface = "^0.95.1"
-probeinterface = ">=0.2.9"
-
-neo = "*"
-joblib = "^1.1.0"
-tqdm = "^4.62.3"
-packaging = "^21.3"
-numpy = "^1.21"
-
-zarr = {version = "^2.12.0", optional = true}
-distinctipy = {version = "^1.2.2", optional = true}
-scikit-learn = {version = "^1.0.2", optional = true}
-h5py = {version = "^3.6.0", optional = true}
-matplotlib = {version = "^3.5.1", optional = true}
-networkx = {version = "^2.7", python= ">=3.8", optional = true}
-
-pandas = [
-    {version = "*", python= "~3.7", optional = true},
-    {version = "^1.4.1", python= ">=3.8", optional = true}
-]
-scipy = [
-    {version = "^1.7.0", python="~3.7", optional = true},
-    {version = "^1.8.0", python=">=3.8,<3.11", optional = true}
-]
-
-datalad = {version = "^0.15.6", optional = true}
-
-MEArec = {version = "^1.7.2", optional = true}
-pynwb = {version = "^2.0.0", optional = true}
-
-sonpy = [
-    {version = "^1.8.1", python= "~3.8", optional = true},
-    {version = "^1.9.1", python= "~3.9", optional = true}
-]
+spikeinterface = {version = "^0.97.0", extras = ["full", "widgets"]}
 
 # spikeinterface_poetry additions
-phy = {version = "^2.0b5", optional = true, allow-prereleases = true}
+phy = {version = "*", optional = true, allow-prereleases = true}
 
 PyQt5 = {version = "^5.15.6", optional = true}
 
@@ -86,18 +53,14 @@ torch = {version = "^1.12.1", optional = true}
 pynndescent = {version = "^0.5.7", optional = true}
 
 # Containerisation frameworks
-spython = {version = "^0.1.18", optional = true}
-docker = {version = "^5.0.3", optional = true}
+spython = {version = "*", optional = true}
+docker = {version = "*", optional = true}
 
 # Dependency blocking, won't be installed directly
 numba = {version = "^0.56.0", optional = true}
 jupyter = {version = "^1.0.0", optional = true}
 
-[tool.poetry.dev-dependencies]
-pytest = "^7.0.1"
-
 [tool.poetry.extras]
-full = ["zarr", "h5py", "pandas", "scipy", "sciki-learn", "matplotlib", "networkx"]
 docker = ["docker"]
 spython = ["spython"]
 singularity = ["spython"]
@@ -120,25 +83,6 @@ all_sorters = [
     "cupy", "phylib", "pypandoc", "pykilosort",
     "Cython", "klusta", "klustakwik2",
     "mountainsort4"
-]
-
-extractors = ["MEArec", "sonpy", "pynwb"]
-
-# The test group should be merged with [tool.poetry.dev-dependencies];
-# split for compability with pure-pip users
-test = [
-#    "docker", "spython",
-
-    "zarr", "distinctpy",
-    "MEArec", "sonpy", "pynwb",
-    "PyQt5",
-    "tridesclous", "loky",
-    "spyking-circus",
-    "herdingspikes",
-
-    "pyEDFlib",
-
-    "pymde", "torch", "pynndescent"
 ]
 
 [tool.pytest.ini_options]
