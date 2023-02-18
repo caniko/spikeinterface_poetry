@@ -1,8 +1,8 @@
 # The poetry of Spikeinterface
 
-This package integrates [spikeinterface](https://spikeinterface.readthedocs.io/en/latest/) into poetry packaging to ensure stability.
+This package integrates [spikeinterface](https://spikeinterface.readthedocs.io/en/latest/) into poetry packaging to ensure stability. From my experience, installing `spikeinterface` is smoother this way.
 
-My personal experience is that installing `spikeinterface` is smoother this way.
+I also store my example notebooks in this repository, find them under the `notebooks` directory!
 
 ## Installation
 
@@ -21,4 +21,4 @@ You can also install `phy`, `docker`, and `spython` (singularity) the same way a
 
 This package is maintained solely by me, and not the original authors of `spikeinterface`. Please don't make any issues related to the packaging in the `spikeinterface` repository. Should you have any problems running any of the spikesorters, contact the author of that spike sorter.
 
-I also can't and don't guarantee that every component of spikeinterface to work as intended by the original authors. This is the nature of downstream packaging by a 3rd party. This should be less of an issue once poetry has been added to `spikeinterface`.
+I also can't and don't guarantee that every component of spikeinterface to work as intended by the original authors. This is the nature of downstream packaging by a 3rd party.
