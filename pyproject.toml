@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "spikeinterface_poetry"
-version = "4.0.0"
-license = "MIT"
+name = "spikeinterface-poetry"
+version = "4.1.0"
+license = "BSD-4"
 
 authors = ["Can H. Tartanoglu <canhtart@gmail.com>"]
 
@@ -18,13 +18,13 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
 
-spikeinterface = {version = "^0.97.0", extras = ["full", "widgets"]}
+spikeinterface = {version = "*", extras = ["full", "widgets"]}
 
 # spikeinterface_poetry additions
-phy = {version = "*", optional = true, allow-prereleases = true}
+phy-poetry = {version = "*", optional = true}
+spikeinterface-gui = {version = "*", optional = true, allow-prereleases = true}
 
-PyQt5 = {version = "^5.15.6", optional = true}
-
+# sorters
 tridesclous = {version = "^1.6.5", optional = true}
 pyopencl = {version = "^2022.1", optional = true}
 loky = {version = "^3.0.0", optional = true}
@@ -44,28 +44,22 @@ Cython = {version = "*", optional = true}
 klusta = {version = "^3.0.16", optional = true}
 klustakwik2 = {version = "^0.2.7", optional = true}
 
-# EDF
-pyEDFlib = {version = "^0.1.30", optional = true}
-
-# sliding_nn
-pymde = {version = "^0.1.15", optional = true}
-torch = {version = "^1.12.1", optional = true}
-pynndescent = {version = "^0.5.7", optional = true}
+# Dependencies
+PyQt5 = {version = "*", optional = true}
+numba = {version = "*", optional = true}
+jupyter = {version = "*", optional = true}
 
 # Containerisation frameworks
 spython = {version = "*", optional = true}
 docker = {version = "*", optional = true}
-
-# Dependency blocking, won't be installed directly
-numba = {version = "^0.56.0", optional = true}
-jupyter = {version = "^1.0.0", optional = true}
 
 [tool.poetry.extras]
 docker = ["docker"]
 spython = ["spython"]
 singularity = ["spython"]
 
-phy = ["phy"]
+phy = ["phy-poetry"]
+gui = ["PyQt5", "spikeinterface-gui"]
 jupyter = ["jupyter"]
 
 tridesclous = ["tridesclous", "PyQt5", "loky", "pyopencl"]
